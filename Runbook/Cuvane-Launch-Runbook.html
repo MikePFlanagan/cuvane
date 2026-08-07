@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuvane — Parent Company Launch Runbook</title>
+<style>
+  :root{
+    --ink:#0c0e12; --ink-2:#14181f; --panel:#181d26; --line:#2a3240;
+    --text:#e9edf4; --muted:#9aa6b8; --dim:#6b7688;
+    --accent:#7dd3fc; --diamond:#e8f0ff; --gold:#f5c76a; --ok:#34d399;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--ink); color:var(--text); line-height:1.6; font-size:16px;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 24px;}
+  /* hero */
+  .hero{
+    background:
+      radial-gradient(1200px 500px at 80% -10%, rgba(125,211,252,.12), transparent 60%),
+      radial-gradient(900px 400px at 10% 110%, rgba(245,199,106,.08), transparent 60%),
+      var(--ink-2);
+    border-bottom:1px solid var(--line);
+    padding:72px 0 56px;
+  }
+  .hero .kicker{letter-spacing:.28em; text-transform:uppercase; color:var(--accent); font-size:12px; font-weight:700;}
+  .hero h1{font-size:clamp(44px,8vw,84px); line-height:1; font-weight:800; letter-spacing:-.02em; margin:14px 0 6px;
+    background:linear-gradient(100deg,var(--diamond) 30%,var(--accent) 60%,var(--gold) 90%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero .tag{font-size:20px; color:var(--muted); font-style:italic;}
+  .hero .meta{margin-top:22px; font-size:14px; color:var(--dim);}
+  .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px;}
+  .badge{border:1px solid var(--line); background:var(--panel); padding:6px 14px; border-radius:999px; font-size:13px; color:var(--muted);}
+  .badge b{color:var(--text);}
+  /* nav */
+  nav{position:sticky; top:0; background:rgba(12,14,18,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); z-index:10;}
+  nav .wrap{display:flex; gap:4px; overflow-x:auto; padding:0 24px;}
+  nav a{color:var(--muted); text-decoration:none; font-size:13px; font-weight:600; padding:14px 12px; white-space:nowrap; border-bottom:2px solid transparent;}
+  nav a:hover{color:var(--text); border-color:var(--accent);}
+  main{padding:56px 0 80px;}
+  section{margin-bottom:64px;}
+  h2{font-size:28px; font-weight:800; letter-spacing:-.01em; margin-bottom:6px;}
+  h2 .step{color:var(--accent);}
+  .sub{color:var(--dim); margin-bottom:20px; font-size:15px;}
+  h3{font-size:19px; font-weight:700; margin:26px 0 8px;}
+  p{margin:12px 0;}
+  ul,ol{margin:10px 0 16px 22px;}
+  li{margin:6px 0;}
+  code{background:var(--panel); border:1px solid var(--line); padding:1px 7px; border-radius:6px; font-size:.88em;}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:14px 0;}
+  .card h3{margin-top:0;}
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px;}
+  .grid4{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px;}
+  .vent{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px;}
+  .vent .vname{font-weight:800; color:var(--diamond);}
+  .vent .vdesc{font-size:13px; color:var(--muted); margin-top:4px;}
+  table{width:100%; border-collapse:collapse; margin:14px 0; font-size:14.5px;}
+  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.08em;}
+  tr:hover td{background:rgba(125,211,252,.03);}
+  .cost{color:var(--gold); font-weight:700; white-space:nowrap;}
+  .free{color:var(--ok); font-weight:700;}
+  .check{list-style:none; margin-left:0;}
+  .check li{padding-left:32px; position:relative;}
+  .check li::before{content:""; position:absolute; left:0; top:2px; width:20px; height:20px; border:2px solid var(--line); border-radius:6px; background:var(--panel);}
+  blockquote{border-left:3px solid var(--accent); padding:10px 18px; margin:18px 0; background:var(--panel); border-radius:0 10px 10px 0; color:var(--muted); font-style:italic;}
+  .money{background:linear-gradient(135deg,rgba(245,199,106,.12),transparent);}
+  .tot{font-size:22px; font-weight:800; color:var(--gold);}
+  .pill{display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:700;}
+  .pill.a{background:rgba(245,199,106,.14); color:var(--gold);}
+  .pill.b{background:rgba(125,211,252,.14); color:var(--accent);}
+  footer{border-top:1px solid var(--line); padding:34px 0 60px; text-align:center; color:var(--dim); font-size:13px;}
+  @media print{
+    body{background:#fff; color:#111;}
+    .hero{background:#fff; border-bottom:2px solid #000; padding:30px 0;}
+    .hero h1{color:#000;-webkit-text-fill-color:#000;}
+    nav{display:none;}
+    .card,.vent{background:#fff; border:1px solid #bbb; break-inside:avoid;}
+    th{background:#f2f2f2;}
+    a{color:#000;}
+    .hero .kicker,.hero .tag{color:#444;}
+    h2{page-break-after:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Parent Company &middot; Launch Runbook</div>
+    <h1>Cuvane</h1>
+    <div class="tag">&ldquo;Under pressure, we make diamonds.&rdquo;</div>
+    <div class="meta">Shoestring Edition &middot; v1.0 &middot; Cuvane.com &middot; Cuvane.ai &middot; Cuvane.io</div>
+    <div class="badges">
+      <span class="badge">Launch cost <b>~$110&ndash;$460</b></span>
+      <span class="badge">Time to launch <b>~2 hours</b></span>
+      <span class="badge">Version <b>1.0</b></span>
+    </div>
+  </div>
+</header>
+
+<nav><div class="wrap">
+  <a href="#vision">Vision</a><a href="#domains">Domains</a><a href="#dev">Developer ID</a>
+  <a href="#email">Email</a><a href="#website">Website</a><a href="#trademark">Trademark</a>
+  <a href="#entity">Entity</a><a href="#workspace">Workspace</a><a href="#budget">Budget</a>
+  <a href="#checklists">Checklists</a><a href="#tracker">Tracker</a>
+</div></nav>
+
+<main class="wrap">
+
+  <!-- VISION -->
+  <section id="vision">
+    <h2>What We Are Building</h2>
+    <p class="sub">A parent company that creates AI-native businesses. One vessel, many facets &mdash; each venture is raw material Cuvane transforms into something precious.</p>
+    <div class="grid4">
+      <div class="vent"><div class="vname">Jarvis</div><div class="vdesc">AI company operating system / executive assistant</div></div>
+      <div class="vent"><div class="vname">FreedomCRM</div><div class="vdesc">Business &amp; real estate CRM</div></div>
+      <div class="vent"><div class="vname">DriveHelp</div><div class="vdesc">Driver assistant application</div></div>
+      <div class="vent"><div class="vname">PersonalAI</div><div class="vdesc">Personal intelligence &amp; memory layer</div></div>
+    </div>
+  </section>
+
+  <!-- DOMAINS -->
+  <section id="domains">
+    <h2><span class="step">Step 1</span> &mdash; Buy the Domains</h2>
+    <p class="sub">Non-negotiable. The name is the asset &mdash; do this <b>first</b>.</p>
+    <div class="card">
+      <ul>
+        <li>Go to <b>Porkbun</b> (cheapest for <code>.ai</code>, all TLDs in one account) or Namecheap.</li>
+        <li>Buy all three: <code>cuvane.com</code> <span class="cost">~$10</span>, <code>cuvane.ai</code> <span class="cost">~$60&ndash;80</span>, <code>cuvane.io</code> <span class="cost">~$40&ndash;50</span>.</li>
+        <li>Enable <b>auto-renew</b> and <b>WHOIS privacy</b> (free at Porkbun).</li>
+        <li>Register in your personal name now; transfer to the company after the entity exists.</li>
+      </ul>
+    </div>
+    <p><b>Why all three?</b> <code>.com</code> is trust and long-term value. <code>.ai</code> is your industry&rsquo;s TLD. <code>.io</code> is the developer/startup TLD. Owning the set keeps the name out of squatters&rsquo; hands.</p>
+  </section>
+
+  <!-- DEV ID -->
+  <section id="dev">
+    <h2><span class="step">Step 2</span> &mdash; Claim Developer Identity <span class="pill a">FREE</span></h2>
+    <div class="card">
+      <ul>
+        <li><b>GitHub organization:</b> <code>github.com/organizations/new</code> &rarr; name <b>cuvane</b>.</li>
+        <li><b>npm scope:</b> <code>npmjs.com/settings/&lt;you&gt;/scopes</code> &rarr; create <code>@cuvane</code>.</li>
+        <li><b>Social handles:</b> <code>@cuvane</code> on X and <code>linkedin.com/company/cuvane</code>.</li>
+      </ul>
+    </div>
+    <p>Squatters take these daily. Do not wait.</p>
+  </section>
+
+  <!-- EMAIL -->
+  <section id="email">
+    <h2><span class="step">Step 3</span> &mdash; Email <span class="pill a">FREE-FIRST</span></h2>
+    <p class="sub">Professional email on your own domain, without paying yet.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Free (now)</h3>
+        <p><b>Zoho Mail Free Plan</b> &mdash; up to 5 users, custom domain, webmail + mobile app, send/receive from <code>@cuvane.com</code>. <span class="free">$0</span></p>
+        <ul>
+          <li><code>michael@cuvane.com</code></li>
+          <li><code>hello@cuvane.com</code></li>
+          <li><code>engineering@</code> &middot; <code>growth@</code> &middot; <code>support@</code></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Paid (when ready)</h3>
+        <p><b>Google Workspace Business Starter</b> &mdash; Gmail, Calendar, Drive, Meet on the domain. <span class="cost">$6/user/mo</span></p>
+        <p class="sub" style="margin-bottom:0">Upgrade whenever revenue supports it. Nothing is lost &mdash; the domain and mailboxes carry over.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEBSITE -->
+  <section id="website">
+    <h2><span class="step">Step 4</span> &mdash; Website <span class="pill a">FREE</span></h2>
+    <div class="card">
+      <ol>
+        <li>One-page site on <code>cuvane.com</code> &mdash; tagline, four products, contact. Plain HTML/CSS is enough.</li>
+        <li>Host on <b>GitHub Pages</b> or <b>Cloudflare Pages</b> &mdash; both free.</li>
+        <li>Point DNS (<code>CNAME</code> for the <code>.com</code>) at the host.</li>
+        <li>SSL is automatic and free on both platforms.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TRADEMARK -->
+  <section id="trademark">
+    <h2><span class="step">Step 5</span> &mdash; Trademark <span class="pill b">DEFERRABLE</span></h2>
+    <p class="sub">First use gives you common-law rights once the site is live. Federal registration makes it enforceable nationwide.</p>
+    <div class="card">
+      <ul>
+        <li>File yourself at <code>tmsearch.uspto.gov</code>, standard character mark, <b>CUVANE</b>.</li>
+        <li>Start with <b>Class 42</b> (SaaS/AI services) &mdash; <span class="cost">$250</span> via TEAS Plus. Add Classes 9 and 35 later, same cost each.</li>
+        <li>Specimen: screenshot of the Cuvane homepage with the logo beside a service description.</li>
+      </ul>
+    </div>
+    <p><b>Budget move:</b> if cash is tight this month, launch first and file the trademark in the same month as your first revenue.</p>
+  </section>
+
+  <!-- ENTITY -->
+  <section id="entity">
+    <h2><span class="step">Step 6</span> &mdash; Legal Entity <span class="pill a">SHOESTRING</span></h2>
+    <p class="sub">You do <b>not</b> need a $500 Delaware C-Corp to start.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Option A &mdash; Existing LLC <span class="free">$0</span></h3>
+        <p>Operate the brand under your current entity, register <b>Cuvane</b> as its trade name, file the trademark in its name. Rebrand/upgrade later.</p>
+      </div>
+      <div class="card">
+        <h3>Option B &mdash; Bizee LLC <span class="free">~$0&ndash;99</span></h3>
+        <p>Bizee (formerly Incfile) offers a free formation tier &mdash; pay only your state filing fee. First year of registered agent is included.</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Option C &mdash; Delaware C-Corp <span class="cost">~$500+</span> (later)</h3>
+      <p>Only when you raise outside capital or need investor-grade structure. Premature on a shoestring budget.</p>
+    </div>
+    <p><b>Don&rsquo;t forget:</b> file the <b>BOIR</b> (Beneficial Ownership Information) at <code>fincen.gov</code> &mdash; free, required for most new entities.</p>
+  </section>
+
+  <!-- WORKSPACE -->
+  <section id="workspace">
+    <h2><span class="step">Step 7</span> &mdash; Google Workspace <span class="pill b">WHEN READY</span></h2>
+    <p>Once revenue covers it, move email to <b>Google Workspace Business Starter</b> (<span class="cost">$6/user/mo</span>): real Gmail + Drive on <code>@cuvane.com</code>, shared calendars across the ventures. The free Zoho setup keeps everything until then.</p>
+  </section>
+
+  <!-- BUDGET -->
+  <section id="budget">
+    <h2>Budget</h2>
+    <div class="grid2">
+      <div class="card money">
+        <h3>Shoestring &mdash; launch now</h3>
+        <table>
+          <tr><td>Domains &times; 3</td><td class="cost">~$110</td></tr>
+          <tr><td>GitHub + npm</td><td class="free">$0</td></tr>
+          <tr><td>Zoho email</td><td class="free">$0</td></tr>
+          <tr><td>GitHub/Cloudflare Pages</td><td class="free">$0</td></tr>
+          <tr><td>Trademark (Class 42, self-filed)</td><td class="cost">~$250</td></tr>
+          <tr><td>Entity (reuse LLC or Bizee)</td><td class="cost">$0&ndash;99</td></tr>
+          <tr><td><b>Total</b></td><td class="tot">~$110&ndash;$460</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Full build &mdash; later</h3>
+        <table>
+          <tr><td>Google Workspace</td><td class="cost">$6/mo</td></tr>
+          <tr><td>Delaware C-Corp</td><td class="cost">~$500</td></tr>
+          <tr><td>Trademark, all 3 classes</td><td class="cost">~$750</td></tr>
+          <tr><td>Legal counsel / brand assets</td><td class="cost">as needed</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLISTS -->
+  <section id="checklists">
+    <h2>Checklists</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Buy today &middot; ~30 min &middot; ~$110</h3>
+        <ul class="check">
+          <li>Buy <code>cuvane.com</code>, <code>cuvane.ai</code>, <code>cuvane.io</code> (Porkbun)</li>
+          <li>Enable auto-renew + WHOIS privacy</li>
+          <li>Create GitHub org <code>cuvane</code></li>
+          <li>Create npm scope <code>@cuvane</code></li>
+          <li>Save logins in the credential tracker</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Week 1 &middot; free</h3>
+        <ul class="check">
+          <li>Zoho Mail free plan &mdash; 5 mailboxes</li>
+          <li>One-page Cuvane site on GitHub Pages</li>
+          <li>Custom domain + SSL pointed at the site</li>
+          <li>Grab <code>@cuvane</code> on X and LinkedIn</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>First revenue month</h3>
+        <ul class="check">
+          <li>File CUVANE trademark, Class 42 (USPTO, $250)</li>
+          <li>Rebrand operating entity under Cuvane (or Bizee LLC)</li>
+          <li>File BOIR at FinCEN (free)</li>
+          <li>Open a dedicated business bank account</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Later</h3>
+        <ul class="check">
+          <li>Google Workspace ($6/mo)</li>
+          <li>Delaware C-Corp + transfer domains to the entity</li>
+          <li>Trademark Classes 9 and 35</li>
+          <li>Launch Jarvis as the first venture</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACKER -->
+  <section id="tracker">
+    <h2>Account &amp; Credential Tracker</h2>
+    <p class="sub">Keep this in a password manager. Never commit credentials to a repo.</p>
+    <table>
+      <tr><th>Service</th><th>Account</th><th>Username / Email</th><th>Cost</th><th>Notes</th></tr>
+      <tr><td>Porkbun</td><td></td><td></td><td class="cost">$110/yr</td><td>domains + DNS</td></tr>
+      <tr><td>GitHub</td><td></td><td></td><td class="free">$0</td><td>org: cuvane</td></tr>
+      <tr><td>npm</td><td></td><td></td><td class="free">$0</td><td>scope: @cuvane</td></tr>
+      <tr><td>Zoho Mail</td><td></td><td></td><td class="free">$0</td><td>5 free mailboxes</td></tr>
+      <tr><td>GitHub Pages / Cloudflare</td><td></td><td></td><td class="free">$0</td><td>website</td></tr>
+      <tr><td>USPTO</td><td></td><td></td><td class="cost">$250</td><td>trademark</td></tr>
+      <tr><td>Bizee / State</td><td></td><td></td><td class="cost">$0&ndash;99</td><td>entity</td></tr>
+      <tr><td>FinCEN BOIR</td><td></td><td></td><td class="free">$0</td><td>required</td></tr>
+      <tr><td>X / LinkedIn</td><td></td><td></td><td class="free">$0</td><td>handles</td></tr>
+    </table>
+  </section>
+
+  <blockquote>Cuvane &mdash; the vessel where raw companies become precious ones. Coal goes in. Diamonds come out.</blockquote>
+
+</main>
+
+<footer>
+  Cuvane &middot; Parent Company Launch Runbook &middot; Shoestring Edition v1.0<br>
+  Cuvane.com &middot; Cuvane.ai &middot; Cuvane.io
+</footer>
+
+</body>
+</html>
