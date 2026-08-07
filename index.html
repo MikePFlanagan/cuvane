@@ -94,6 +94,9 @@
   }
   .card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
   .card p { color: var(--muted); font-size: 0.92rem; }
+  a.card { display: block; color: inherit; text-decoration: none; transition: border-color 0.15s; }
+  a.card:hover { border-color: var(--accent); text-decoration: none; }
+  a.card:hover h3 { color: var(--accent); }
   .card .tag {
     display: inline-block;
     font-size: 0.72rem;
@@ -160,10 +163,10 @@
         <p>An AI company operating system and executive assistant that runs the business.</p>
         <span class="tag">Flagship</span>
       </div>
-      <div class="card">
+      <a class="card" href="https://mikepflanagan.github.io/dealdiamondcrm-site/">
         <h3>DealDiamondCRM</h3>
         <p>The CRM for real estate investors, wholesalers, and creative finance — find the diamond in every deal.</p>
-      </div>
+      </a>
       <div class="card">
         <h3>DriveHelp</h3>
         <p>A driver assistant application that keeps attention on the road.</p>
