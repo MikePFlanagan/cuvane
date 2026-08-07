@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuvane Aura — the machine that makes diamonds</title>
+<meta name="description" content="The Cuvane Aura theme: a glowing forge-to-diamond visual identity for Cuvane — the vessel where raw companies become precious ones.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,6 90,50 50,94 10,50' fill='none' stroke='%23e0e7ff' stroke-width='6'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #07080d;
+    --panel: #0d1019;
+    --line: #1d2333;
+    --ink: #eef1f8;
+    --muted: #99a1b8;
+    --violet: #8b5cf6;
+    --indigo: #a5b4fc;
+    --white: #ffffff;
+    --ember: #f59e0b;
+    --max: 68rem;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: var(--indigo); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(42rem 32rem at 18% -6%, rgba(139, 92, 246, 0.20), transparent 60%),
+      radial-gradient(40rem 32rem at 88% 108%, rgba(245, 158, 11, 0.12), transparent 60%),
+      radial-gradient(30rem 24rem at 78% 12%, rgba(165, 180, 252, 0.14), transparent 60%),
+      var(--bg);
+  }
+
+  header {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 1.4rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+  }
+  .brand svg { width: 1.5rem; height: 1.5rem; flex: none; }
+  .brand:hover { text-decoration: none; }
+  nav { display: flex; gap: 1.25rem; font-size: 0.92rem; color: var(--muted); }
+  nav a { color: var(--muted); }
+  nav a:hover { color: var(--ink); text-decoration: none; }
+
+  main { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+
+  .hero { text-align: center; padding: 4rem 0 3rem; position: relative; }
+  .hero .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    color: var(--ember);
+    margin-bottom: 1.1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.3rem, 6vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--ember), #fbbf24 30%, var(--violet) 70%, var(--indigo)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { color: var(--muted); max-width: 38rem; margin: 0 auto 2rem; font-size: 1.08rem; }
+
+  .machine-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0 4rem;
+  }
+  .machine-stage .halo {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(165, 180, 252, 0.35);
+    animation: halo-pulse 4s ease-in-out infinite;
+  }
+  .machine-stage .halo.h1 { width: 15rem; height: 15rem; }
+  .machine-stage .halo.h2 { width: 20rem; height: 20rem; animation-delay: 1.3s; }
+  .machine-stage .halo.h3 { width: 26rem; height: 26rem; animation-delay: 2.6s; }
+  .machine-stage .machine {
+    position: relative;
+    width: 12rem;
+    height: 12rem;
+    filter: drop-shadow(0 0 1.6rem rgba(165, 180, 252, 0.45));
+  }
+  .machine-stage .coal {
+    position: absolute;
+    top: -0.5rem;
+    left: 50%;
+    width: 2.6rem;
+    margin-left: -1.3rem;
+    animation: float 3.2s ease-in-out infinite;
+  }
+  .machine-stage .diamond-out {
+    position: absolute;
+    bottom: -2.2rem;
+    left: 50%;
+    width: 3rem;
+    margin-left: -1.5rem;
+    filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.75));
+    animation: float 3.2s ease-in-out 1.6s infinite;
+  }
+
+  @keyframes halo-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.12); opacity: 0.25; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-0.45rem); }
+  }
+
+  section { padding: 3rem 0; }
+  .section-head { text-align: center; max-width: 44rem; margin: 0 auto 2.2rem; }
+  .section-head h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -0.01em; margin-bottom: 0.7rem; }
+  .section-head p { color: var(--muted); }
+
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.9rem; }
+  .swatch { background: var(--panel); border: 1px solid var(--line); border-radius: 0.75rem; padding: 1rem 1rem 1.1rem; }
+  .swatch .chip { height: 3rem; border-radius: 0.5rem; margin-bottom: 0.7rem; border: 1px solid rgba(255,255,255,0.08); }
+  .swatch .name { font-size: 0.9rem; font-weight: 600; }
+  .swatch .hex { font-size: 0.78rem; color: var(--muted); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+  .icon-tile {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    padding: 1.6rem 1rem 1.4rem;
+    text-align: center;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .icon-tile:hover { border-color: var(--violet); transform: translateY(-2px); }
+  .icon-tile svg { width: 5rem; height: 5rem; margin-bottom: 0.8rem; }
+  .icon-tile h3 { font-size: 0.98rem; margin-bottom: 0.3rem; }
+  .icon-tile p { color: var(--muted); font-size: 0.82rem; }
+
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+  }
+  .flow svg { width: 4.5rem; height: 4.5rem; }
+  .flow .arrow {
+    color: var(--ember);
+    font-size: 1.6rem;
+    animation: float 2.4s ease-in-out infinite;
+  }
+
+  .tokens { display: grid; gap: 0.6rem; }
+  .token { display: flex; align-items: baseline; gap: 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: 0.6rem; padding: 0.8rem 1.1rem; font-size: 0.92rem; }
+  .token code { color: var(--ember); font-size: 0.85rem; }
+  .token span { color: var(--muted); }
+
+  footer { border-top: 1px solid var(--line); margin-top: 2rem; }
+  footer .inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 40rem) {
+    header { flex-direction: column; gap: 0.8rem; }
+    nav { gap: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-aura" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="0.5" stop-color="#a5b4fc"/>
+      <stop offset="1" stop-color="#e0e7ff"/>
+    </linearGradient>
+    <linearGradient id="g-diamond" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#a5b4fc"/>
+    </linearGradient>
+    <linearGradient id="g-heat" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#7c2d12"/>
+      <stop offset="0.6" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#fde68a"/>
+    </linearGradient>
+
+    <symbol id="dd-cuvane-machine" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="44" fill="none" stroke="url(#g-aura)" stroke-width="3"/>
+      <circle cx="50" cy="50" r="30" fill="none" stroke="url(#g-aura)" stroke-width="1.5" opacity="0.4"/>
+      <circle cx="40" cy="67" r="10" fill="none" stroke="#c7d2fe" stroke-width="6" stroke-dasharray="4 5" opacity="0.85"/>
+      <circle cx="40" cy="67" r="2.6" fill="url(#g-diamond)"/>
+      <path d="M30 60 L70 60 L65 79 Q50 87 35 79 Z" fill="none" stroke="url(#g-aura)" stroke-width="3" stroke-linejoin="round"/>
+      <g transform="translate(50 46)">
+        <polygon points="0,-14 12,-4 9,8 0,14 -9,8 -12,-4" fill="url(#g-diamond)" stroke="#fff" stroke-width="1.5"/>
+        <path d="M0 -14 L0 14 M-12 -4 L12 -4 M-9 8 L9 8" stroke="#fff" stroke-width="1" opacity="0.7"/>
+      </g>
+      <path d="M43 10 Q46 4 52 6 Q58 9 54 15 Q47 18 43 10 Z" fill="#232833" stroke="#c7d2fe" stroke-width="1.5"/>
+      <path d="M76 18 l3 6 6 3 -6 3 -3 6 -3 -6 -6 -3 6 -3 Z" fill="#fde68a"/>
+      <path d="M18 24 l2.6 5.2 5.2 2.6 -5.2 2.6 -2.6 5.2 -2.6 -5.2 -5.2 -2.6 5.2 -2.6 Z" fill="#fde68a" opacity="0.9"/>
+    </symbol>
+
+    <symbol id="dd-diamond" viewBox="0 0 100 100">
+      <polygon points="50,8 84,40 72,88 28,88 16,40" fill="url(#g-diamond)" stroke="#fff" stroke-width="2"/>
+      <path d="M16 40 L84 40 M50 8 L50 40 M50 40 L28 88 M50 40 L72 88" stroke="#fff" stroke-width="1.2" opacity="0.55"/>
+    </symbol>
+
+    <symbol id="dd-coal" viewBox="0 0 100 100">
+      <path d="M30 40 Q26 28 40 24 Q52 20 62 30 Q72 36 68 50 Q66 62 52 66 Q38 68 32 56 Z" fill="#232833" stroke="#c7d2fe" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M46 34 Q52 30 56 36" stroke="#e0e7ff" stroke-width="2" fill="none" opacity="0.8"/>
+      <path d="M42 50 Q48 46 54 52" stroke="#e0e7ff" stroke-width="1.5" fill="none" opacity="0.5"/>
+    </symbol>
+
+    <symbol id="dd-pressure" viewBox="0 0 100 100">
+      <path d="M28 24 l-5 -5 M38 20 l-2 -7 M62 20 l2 -7 M72 24 l5 -5" stroke="#fde68a" stroke-width="2.4" opacity="0.85"/>
+      <rect x="30" y="16" width="40" height="10" rx="3" fill="url(#g-aura)"/>
+      <path d="M50 26 L50 44" stroke="url(#g-aura)" stroke-width="6"/>
+      <polygon points="38,44 62,44 56,56 44,56" fill="url(#g-aura)"/>
+      <polygon points="50,62 61,71 56,84 44,84 39,71" fill="url(#g-diamond)" stroke="#fff" stroke-width="1.5"/>
+      <rect x="22" y="86" width="56" height="6" rx="2" fill="#1d2333" stroke="#c7d2fe" stroke-width="1.5"/>
+    </symbol>
+
+    <symbol id="dd-gears" viewBox="0 0 100 100">
+      <circle cx="42" cy="44" r="16" fill="none" stroke="url(#g-aura)" stroke-width="7" stroke-dasharray="5 6"/>
+      <circle cx="42" cy="44" r="5" fill="url(#g-diamond)"/>
+      <circle cx="66" cy="64" r="11" fill="none" stroke="url(#g-aura)" stroke-width="6" stroke-dasharray="4 5"/>
+      <circle cx="66" cy="64" r="3.4" fill="url(#g-diamond)"/>
+    </symbol>
+
+    <symbol id="dd-aura" viewBox="0 0 100 100">
+      <g stroke="url(#g-aura)" stroke-width="2.5" stroke-linecap="round">
+        <path d="M50 8 L50 24 M50 76 L50 92 M8 50 L24 50 M76 50 L92 50"/>
+        <path d="M20 20 L31 31 M69 20 L80 31 M20 80 L31 69 M69 80 L80 69"/>
+      </g>
+      <polygon points="50,32 56,44 68,50 56,56 50,68 44,56 32,50 44,44" fill="url(#g-diamond)"/>
+    </symbol>
+
+    <symbol id="dd-creator" viewBox="0 0 100 100">
+      <g stroke="#fde68a" stroke-width="1.5" stroke-linecap="round" opacity="0.85">
+        <path d="M50 8 L50 3 M66 11 L72 5 M34 11 L28 5"/>
+      </g>
+      <polygon points="50,14 74,36 64,60 36,60 26,36" fill="url(#g-diamond)" stroke="#fff" stroke-width="1.5"/>
+      <path d="M26 36 L74 36 M50 14 L50 36 M50 36 L36 60 M50 36 L64 60" stroke="#fff" stroke-width="1" opacity="0.55"/>
+      <path d="M50 78 C42 68 38 62 42 52 C50 58 50 58 50 50 C50 58 50 58 58 52 C62 62 58 68 50 78 Z" fill="url(#g-heat)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <a class="brand" href="../">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,6 90,50 50,94 10,50" fill="none" stroke="#e0e7ff" stroke-width="6"/></svg>
+    CUVANE · AURA
+  </a>
+  <nav>
+    <a href="#palette">Palette</a>
+    <a href="#icons">Icons</a>
+    <a href="#flow">The Flow</a>
+    <a href="#tokens">Tokens</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="kicker">The Cuvane Machine</div>
+    <h1>Coal goes in. <em>Brilliance</em> comes out.</h1>
+    <p>The Cuvane Aura theme turns the forge into identity — heat, pressure, and the vessel where raw companies become precious ones.</p>
+    <div class="machine-stage">
+      <span class="halo h1"></span>
+      <span class="halo h2"></span>
+      <span class="halo h3"></span>
+      <svg class="coal"><use href="#dd-coal"/></svg>
+      <svg class="machine"><use href="#dd-cuvane-machine"/></svg>
+      <svg class="diamond-out"><use href="#dd-diamond"/></svg>
+    </div>
+  </div>
+
+  <section id="palette">
+    <div class="section-head">
+      <h2>Aura palette</h2>
+      <p>Ember heat into violet pressure into white brilliance.</p>
+    </div>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#07080d;border-color:#1d2333"></div><div class="name">Obsidian</div><div class="hex">#07080d</div></div>
+      <div class="swatch"><div class="chip" style="background:#0d1019"></div><div class="name">Forge Panel</div><div class="hex">#0d1019</div></div>
+      <div class="swatch"><div class="chip" style="background:#8b5cf6"></div><div class="name">Pressure Violet</div><div class="hex">#8b5cf6</div></div>
+      <div class="swatch"><div class="chip" style="background:#a5b4fc"></div><div class="name">Aura Indigo</div><div class="hex">#a5b4fc</div></div>
+      <div class="swatch"><div class="chip" style="background:#ffffff"></div><div class="name">Diamond White</div><div class="hex">#ffffff</div></div>
+      <div class="swatch"><div class="chip" style="background:#f59e0b"></div><div class="name">Forge Ember</div><div class="hex">#f59e0b</div></div>
+    </div>
+  </section>
+
+  <section id="icons">
+    <div class="section-head">
+      <h2>Diamond creator icons</h2>
+      <p>Line-work marks with gradient strokes — every icon is a self-contained SVG symbol.</p>
+    </div>
+    <div class="grid">
+      <div class="icon-tile"><svg><use href="#dd-cuvane-machine"/></svg><h3>The Cuvane Machine</h3><p>The vessel-forge: coal in, diamond out, gears turning.</p></div>
+      <div class="icon-tile"><svg><use href="#dd-diamond"/></svg><h3>The Diamond</h3><p>The finished gem — brilliance under pressure.</p></div>
+      <div class="icon-tile"><svg><use href="#dd-coal"/></svg><h3>Raw Coal</h3><p>The raw material, glowing from within.</p></div>
+      <div class="icon-tile"><svg><use href="#dd-pressure"/></svg><h3>The Pressure</h3><p>The forge press — what makes the gem.</p></div>
+      <div class="icon-tile"><svg><use href="#dd-gears"/></svg><h3>The Machine</h3><p>Turning gears — the machinery that builds.</p></div>
+      <div class="icon-tile"><svg><use href="#dd-aura"/></svg><h3>The Aura</h3><p>Radiating brilliance around the diamond.</p></div>
+      <div class="icon-tile"><svg><use href="#dd-creator"/></svg><h3>The Creator</h3><p>Ember below, diamond above — creation in one mark.</p></div>
+    </div>
+  </section>
+
+  <section id="flow">
+    <div class="section-head">
+      <h2>The flow</h2>
+      <p>Every venture travels the same path.</p>
+    </div>
+    <div class="flow">
+      <svg><use href="#dd-coal"/></svg>
+      <span class="arrow">→</span>
+      <svg><use href="#dd-cuvane-machine"/></svg>
+      <span class="arrow">→</span>
+      <svg><use href="#dd-diamond"/></svg>
+    </div>
+  </section>
+
+  <section id="tokens">
+    <div class="section-head">
+      <h2>Design tokens</h2>
+      <p>Copy these into any Cuvane surface.</p>
+    </div>
+    <div class="tokens">
+      <div class="token"><code>--bg</code><span>#07080d</span></div>
+      <div class="token"><code>--panel</code><span>#0d1019</span></div>
+      <div class="token"><code>--line</code><span>#1d2333</span></div>
+      <div class="token"><code>--violet</code><span>#8b5cf6 · pressure</span></div>
+      <div class="token"><code>--indigo</code><span>#a5b4fc · aura</span></div>
+      <div class="token"><code>--white</code><span>#ffffff · diamond</span></div>
+      <div class="token"><code>--ember</code><span>#f59e0b · forge</span></div>
+      <div class="token"><code>background</code><span>three layered radial glows over obsidian</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="inner">
+    <span>&copy; 2026 Cuvane</span>
+    <span><a href="../">Back to Cuvane</a> &middot; Aura theme</span>
+  </div>
+</footer>
+
+</body>
+</html>
