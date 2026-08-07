@@ -20,7 +20,7 @@ Cuvane/                    <- this repo (parent company)
 │   └── Cuvane-Launch-Runbook.pdf     (print/share)
 └── Ventures/
     ├── Jarvis/          AI company operating system / executive assistant
-    ├── FreedomCRM/      Business and real estate CRM
+    ├── DealDiamondCRM/  Real estate investor & creative finance CRM
     ├── DriveHelp/       Driver assistant application
     └── PersonalAI/      Personal intelligence and memory layer
 ```
@@ -32,6 +32,7 @@ Cuvane/                    <- this repo (parent company)
 - [ ] Create npm scope `@cuvane`
 - [ ] Zoho Mail free plan on the domain
 - [x] One-page site on GitHub Pages (live at `https://mikepflanagan.github.io/cuvane/`)
+- [x] DealDiamondCRM venture site (live at `https://mikepflanagan.github.io/dealdiamondcrm-site/`)
 - [ ] File CUVANE trademark (Class 42, $250, deferrable)
 - [ ] Legal entity (reuse LLC or Bizee free tier)
 - [ ] File BOIR at FinCEN (free)
@@ -42,7 +43,7 @@ Cuvane/                    <- this repo (parent company)
 | Venture | Purpose |
 |---|---|
 | **Jarvis** | AI company operating system / executive assistant |
-| **FreedomCRM** | Business and real estate CRM |
+| **DealDiamondCRM** | CRM for real estate investors, wholesalers, and creative finance |
 | **DriveHelp** | Driver assistant application |
 | **PersonalAI** | Personal intelligence and memory layer |
 
@@ -58,7 +59,7 @@ Cuvane/                    <- this repo (parent company)
 
 1. Launch parent brand (this runbook)
 2. Ship Jarvis as the first venture
-3. Stand up FreedomCRM, DriveHelp, PersonalAI
+3. Stand up DealDiamondCRM, DriveHelp, PersonalAI
 4. Upgrade entity to Delaware C-Corp when raising capital
 
 ---

@@ -17,7 +17,7 @@ precious — the same way pressure turns coal into diamond.
 | | |
 |---|---|
 | **Jarvis** | AI company operating system / executive assistant |
-| **FreedomCRM** | Business and real estate CRM |
+| **DealDiamondCRM** | CRM for real estate investors, wholesalers, and creative finance |
 | **DriveHelp** | Driver assistant application |
 | **PersonalAI** | Personal intelligence and memory layer |
 | **Future products** | New carbon, same vessel |
