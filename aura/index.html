@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cuvane Aura — the machine that makes diamonds</title>
 <meta name="description" content="The Cuvane Aura theme: a glowing forge-to-diamond visual identity for Cuvane — the vessel where raw companies become precious ones.">
+<link rel="canonical" href="https://cuvane.com/aura/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cuvane">
+<meta property="og:title" content="Cuvane Aura — the machine that makes diamonds">
+<meta property="og:description" content="The Cuvane Aura theme: a glowing forge-to-diamond visual identity for Cuvane — the vessel where raw companies become precious ones.">
+<meta property="og:url" content="https://cuvane.com/aura/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cuvane Aura — the machine that makes diamonds">
+<meta name="twitter:description" content="The Cuvane Aura theme: a glowing forge-to-diamond visual identity for Cuvane.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,6 90,50 50,94 10,50' fill='none' stroke='%23e0e7ff' stroke-width='6'/%3E%3C/svg%3E">
 <style>
   :root {
@@ -31,6 +40,20 @@
   }
   a { color: var(--indigo); text-decoration: none; }
   a:hover { text-decoration: underline; }
+
+  .skip {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    z-index: 100;
+    background: var(--panel);
+    color: var(--ink);
+    border: 1px solid var(--indigo);
+    border-radius: 0.4rem;
+    padding: 0.6rem 1rem;
+  }
+  .skip:focus { left: 1rem; top: 1rem; }
+  .sprite { position: absolute; }
 
   .bg-glow {
     position: fixed;
@@ -143,6 +166,12 @@
   .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.9rem; }
   .swatch { background: var(--panel); border: 1px solid var(--line); border-radius: 0.75rem; padding: 1rem 1rem 1.1rem; }
   .swatch .chip { height: 3rem; border-radius: 0.5rem; margin-bottom: 0.7rem; border: 1px solid rgba(255,255,255,0.08); }
+  .chip.obsidian { background: #07080d; border-color: #1d2333; }
+  .chip.forge-panel { background: #0d1019; }
+  .chip.violet { background: #8b5cf6; }
+  .chip.indigo { background: #a5b4fc; }
+  .chip.white { background: #ffffff; }
+  .chip.ember { background: #f59e0b; }
   .swatch .name { font-size: 0.9rem; font-weight: 600; }
   .swatch .hex { font-size: 0.78rem; color: var(--muted); }
 
@@ -202,7 +231,9 @@
 <body>
 <div class="bg-glow"></div>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<a class="skip" href="#palette">Skip to content</a>
+
+<svg class="sprite" width="0" height="0" aria-hidden="true">
   <defs>
     <linearGradient id="g-aura" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#8b5cf6"/>
@@ -314,12 +345,12 @@
       <p>Ember heat into violet pressure into white brilliance.</p>
     </div>
     <div class="swatches">
-      <div class="swatch"><div class="chip" style="background:#07080d;border-color:#1d2333"></div><div class="name">Obsidian</div><div class="hex">#07080d</div></div>
-      <div class="swatch"><div class="chip" style="background:#0d1019"></div><div class="name">Forge Panel</div><div class="hex">#0d1019</div></div>
-      <div class="swatch"><div class="chip" style="background:#8b5cf6"></div><div class="name">Pressure Violet</div><div class="hex">#8b5cf6</div></div>
-      <div class="swatch"><div class="chip" style="background:#a5b4fc"></div><div class="name">Aura Indigo</div><div class="hex">#a5b4fc</div></div>
-      <div class="swatch"><div class="chip" style="background:#ffffff"></div><div class="name">Diamond White</div><div class="hex">#ffffff</div></div>
-      <div class="swatch"><div class="chip" style="background:#f59e0b"></div><div class="name">Forge Ember</div><div class="hex">#f59e0b</div></div>
+      <div class="swatch"><div class="chip obsidian"></div><div class="name">Obsidian</div><div class="hex">#07080d</div></div>
+      <div class="swatch"><div class="chip forge-panel"></div><div class="name">Forge Panel</div><div class="hex">#0d1019</div></div>
+      <div class="swatch"><div class="chip violet"></div><div class="name">Pressure Violet</div><div class="hex">#8b5cf6</div></div>
+      <div class="swatch"><div class="chip indigo"></div><div class="name">Aura Indigo</div><div class="hex">#a5b4fc</div></div>
+      <div class="swatch"><div class="chip white"></div><div class="name">Diamond White</div><div class="hex">#ffffff</div></div>
+      <div class="swatch"><div class="chip ember"></div><div class="name">Forge Ember</div><div class="hex">#f59e0b</div></div>
     </div>
   </section>
 

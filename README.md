@@ -31,7 +31,7 @@ Cuvane/                    <- this repo (parent company)
 - [ ] Create GitHub org `cuvane`
 - [ ] Create npm scope `@cuvane`
 - [ ] Zoho Mail free plan on the domain
-- [x] One-page site on GitHub Pages (live at `https://mikepflanagan.github.io/cuvane/`)
+- [x] One-page site on GitHub Pages (live at `https://cuvane.com`)
 - [x] DealDiamondCRM venture site (live at `https://mikepflanagan.github.io/dealdiamondcrm-site/`)
 - [ ] File CUVANE trademark (Class 42, $250, deferrable)
 - [ ] Legal entity (reuse LLC or Bizee free tier)
